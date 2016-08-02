@@ -1,7 +1,7 @@
 
 var thunkify       = require('thunkify');
 var browserSync    = thunkify(require('browser-sync').init);
-var StreamInjecter = require('stream-injecter');
+var ScriptInjector = require('script-injecter');
 
 module.exports = function(opts) {
 
@@ -37,12 +37,7 @@ module.exports = function(opts) {
 
     // Stream
     if (this.body && typeof this.body.pipe === 'function') {
-      var injecter = new StreamInjecter({
-        matchRegExp: /(<\/body>)/,
-        inject:      snippet,
-        replace:     snippet + '$1',
-        ignore:      /client\/browser-sync-client/
-      });
+      var injecter = new ScriptInjector(snippet);
       var size = +this.response.header['content-length'];
       if (size) this.set('Content-Length', size + snippet.length);
       this.body = this.body.pipe(injecter);

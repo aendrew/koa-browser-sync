@@ -1,7 +1,7 @@
 koa-browser-sync
 ================
 
-[BrowserSync](http://browsersync.io/) middleware for [Koa](http://koajs.com/).
+[BrowserSync](http://browsersync.io/) middleware for [Koa 2](http://koajs.com/).
 
 Use this middleware to automatically inject the necessary `browser-sync` snippet into your HTML pages.
 
@@ -53,8 +53,8 @@ if (app.env == 'development') {
   app.use(require('koa-browser-sync')();
 }
 
-app.use(function *(){
-  this.body = '<html><body>Hello World</body></html>';
+app.use(function(ctx, next){
+  ctx.body = '<html><body>Hello World</body></html>';
 });
 
 app.listen(3000);
