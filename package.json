@@ -22,6 +22,7 @@
   "bugs": {
     "url": "https://github.com/SimonDegraeve/koa-browser-sync/issues"
   },
+  "typings": "index.d.ts",
   "homepage": "https://github.com/SimonDegraeve/koa-browser-sync",
   "dependencies": {
     "browser-sync": "^2.14.0",
